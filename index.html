@@ -2277,29 +2277,31 @@
     }
   });
 
-  /* ==========================================
-     SMOOTH SCROLL for anchor links
-  ========================================== */
-  document.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', e => {
-      const target = document.querySelector(link.getAttribute('href'));
-      if (!target) return;
-      e.preventDefault();
-      const offset = 90;
-      window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
-    });
-  });
-<!-- Tumhara existing page content -->
-
-<!-- Script to update business info -->
 <script>
+
+/* ==========================================
+   SMOOTH SCROLL for anchor links
+========================================== */
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener('click', e => {
+    const target = document.querySelector(link.getAttribute('href'));
+    if (!target) return;
+    e.preventDefault();
+    const offset = 90;
+    window.scrollTo({ top: target.offsetTop - offset, behavior: 'smooth' });
+  });
+});
+
+/* ==========================================
+   BUSINESS INFO UPDATE
+========================================== */
 document.addEventListener("DOMContentLoaded", function() {
+
   const BUSINESS_NAME = "Ali Mughal Bakery";
   const BUSINESS_TYPE = "Bakery";
   const BUSINESS_LOCATION = "Abbottabad";
   const BUSINESS_URL = "https://example.com";
 
-  // Update meta tags safely
   document.title = `${BUSINESS_NAME} | Premium ${BUSINESS_TYPE} in ${BUSINESS_LOCATION}`;
 
   const descriptionMeta = document.querySelector('meta[name="description"]');
@@ -2320,11 +2322,12 @@ document.addEventListener("DOMContentLoaded", function() {
   const canonicalLink = document.querySelector('link[rel="canonical"]');
   if(canonicalLink) canonicalLink.setAttribute("href", BUSINESS_URL);
 
-  // Update visible text in hero & nav
   document.querySelectorAll(".hero-title").forEach(el => el.textContent = BUSINESS_NAME);
   document.querySelectorAll(".hero-tagline").forEach(el => el.textContent = `Premium ${BUSINESS_TYPE} in ${BUSINESS_LOCATION}`);
   document.querySelectorAll(".nav-logo-text").forEach(el => el.textContent = BUSINESS_NAME);
   document.querySelectorAll(".nav-logo-sub").forEach(el => el.textContent = BUSINESS_TYPE);
+
 });
+
 </script>
 </body>
