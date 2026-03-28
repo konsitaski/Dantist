@@ -5,9 +5,23 @@ document.addEventListener("DOMContentLoaded", function() {
   const doctorName = params.get("doctor") || "Dr. Demo";
   const locationName = params.get("location") || "Abbottabad";
 
-  // Update only specific page elements
-  const selectors = [".hero-title", ".hero-tagline", ".nav-logo-text", ".nav-logo-sub", ".doctor-name"];
-  selectors.forEach(sel => {
+  // Safe selectors for visible text
+  const textSelectors = [
+    ".hero-title",
+    ".hero-tagline",
+    ".nav-logo-text",
+    ".nav-logo-sub",
+    ".doctor-name",
+    "h1",
+    "h2",
+    "h3",
+    "h4",
+    "p",
+    "span",
+    "li"
+  ];
+
+  textSelectors.forEach(sel => {
     document.querySelectorAll(sel).forEach(el => {
       el.textContent = el.textContent
         .replace(/Dantist/gi, clinicName)
